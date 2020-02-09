@@ -8,7 +8,7 @@ router.get('/:word/definitions', async function(req, res) {
         res.send(ans);
     }
     catch(err) {
-        res.send(err);
+        res.status(400).send(err);
     }
 });
 
@@ -19,7 +19,7 @@ router.get('/:word/antonyms', async function(req, res) {
         res.send(ans);
     }
     catch(err) {
-        res.send(err);
+        res.status(400).send(err);
     }
 });
 
@@ -30,7 +30,7 @@ router.get('/:word/synonyms', async function(req, res) {
         res.send(ans);
     }
     catch(err) {
-        res.send(err);
+        res.status(400).send(err);
     }
 });
 
@@ -41,7 +41,7 @@ router.get('/:word/examples', async function(req, res) {
         res.send(ans);
     }
     catch(err) {
-        res.send(err);
+        res.status(400).send(err);
     }
 });
 
