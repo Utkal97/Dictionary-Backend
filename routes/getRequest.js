@@ -1,15 +1,22 @@
 const mongoose = require('mongoose');
 const wordSchema = require('../wordSchema.js');
 
-function getInfo(word, info, res) {
+async function getInfo(word, info) {
     const collection = word[0].toUpperCase();
     console.log(`${info} requested for ${word}. Searching in collection-${collection}`);
     const wordModel = mongoose.model('word', wordSchema, collection);
-    wordModel
-        .findOne({word : word})
-        .select(`${info} -_id`)
-        .then( (doc) => res.send(doc[info]))
-        .catch( (err) => {return err})
+    try {
+        const doc = await wordModel
+                    .findOne({word : word})
+                    .select(`${info} -_id`);
+
+        if(doc === null)
+            throw { err : "dictionary doesn't contain this word. "};
+        return doc;
+    }
+    catch(err) {
+        throw err;
+    }
 } 
 
 function getRandom(res) {

@@ -1,24 +1,48 @@
 const router = require('express').Router();
-const {getWordInfo} = require('./getRequest.js');
+const { getWordInfo } = require('./getRequest.js');
 
-router.get('/:word/definitions', function(req, res) {
+router.get('/:word/definitions', async function(req, res) {
     const reqWord = req.params.word;
-    getWordInfo(reqWord, 'definitions', res);
+    try {
+        const ans = await getWordInfo(reqWord, 'definitions');
+        res.send(ans);
+    }
+    catch(err) {
+        res.send(err);
+    }
 });
 
-router.get('/:word/antonyms', function(req, res) {
+router.get('/:word/antonyms', async function(req, res) {
     const reqWord = req.params.word;
-    getWordInfo(reqWord, 'antonyms', res);
+    try {
+        const ans = await getWordInfo(reqWord, 'antonyms');
+        res.send(ans);
+    }
+    catch(err) {
+        res.send(err);
+    }
 });
 
-router.get('/:word/synonyms', function(req, res) {
+router.get('/:word/synonyms', async function(req, res) {
     const reqWord = req.params.word;
-    getWordInfo(reqWord, 'synonyms', res);
+    try {
+        const ans = await getWordInfo(reqWord, 'synonyms');
+        res.send(ans);
+    }
+    catch(err) {
+        res.send(err);
+    }
 });
 
-router.get('/:word/examples', function(req, res) {
+router.get('/:word/examples', async function(req, res) {
     const reqWord = req.params.word;
-    getWordInfo(reqWord, 'examples', res);
+    try {
+        const ans = await getWordInfo(reqWord, 'examples');
+        res.send(ans);
+    }
+    catch(err) {
+        res.send(err);
+    }
 });
 
 module.exports = router;
