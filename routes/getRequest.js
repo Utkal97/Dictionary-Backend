@@ -11,7 +11,7 @@ async function getSpecificInfo(word, info) {
                     .select(`${info} -_id`);
 
         if(doc === null)
-            throw { err : "dictionary doesn't contain this word. "};
+            throw { status: 404 };
         return doc;
     }
     catch(err) {
@@ -27,8 +27,9 @@ async function getWordInfo(word) {
         const doc = await wordModel
                     .findOne({word : word})
                     .select(`-_id`);
+
         if(doc === null)
-            throw { err : "dictionary doesn't contain this word. "};
+            throw { status : 404 };
         return doc;
     }
     catch(err) {
