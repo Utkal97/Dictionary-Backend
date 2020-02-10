@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const wordSchema = require('../wordSchema.js');
 
-async function getInfo(word, info) {
+async function getSpecificInfo(word, info) {
     const collection = word[0].toUpperCase();
     console.log(`${info} requested for ${word}. Searching in collection-${collection}`);
     const wordModel = mongoose.model('word', wordSchema, collection);
@@ -19,6 +19,23 @@ async function getInfo(word, info) {
     }
 } 
 
+async function getWordInfo(word) {
+    const collection = word[0].toUpperCase();
+    console.log(`Whole information for word ${word} is being given.`);
+    const wordModel = mongoose.model('word', wordSchema, collection);
+    try {
+        const doc = await wordModel
+                    .findOne({word : word})
+                    .select(`-_id`);
+        if(doc === null)
+            throw { err : "dictionary doesn't contain this word. "};
+        return doc;
+    }
+    catch(err) {
+        throw err;
+    }
+}
+
 function getRandom(res) {
     const coll = String.fromCharCode(65 + Math.floor(Math.random() * 25));
     // console.log(`Giving off any word starting with Letter : ${coll}`);
@@ -35,5 +52,7 @@ function getRandom(res) {
         );
     });
 }
-module.exports.getWordInfo = getInfo;
+
+module.exports.getSpecificInfo = getSpecificInfo;
+module.exports.getWordInfo = getWordInfo;
 module.exports.getRandomWord = getRandom;
