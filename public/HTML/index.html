@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+            crossorigin="anonymous"
+        />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="container-fluid pt-3 bg-dark text-white">
+            <h1 style="padding-left: 5%; padding-bottom: 1%;">Dictionary Server</h1>
+        </div>
+        <br/>
+        <div class="container">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">API calls</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Testing</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">CLI tool</a>
+                </div>
+            </nav>
+            <br/>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <h3>GET Requests -</h3>
+                    <br>
+                    GET '/word/<code>&lt;your_word&gt;</code>/definitions' :<br/>
+                    Returns definitions of the requested word.<br/>
+                    Output format : List of Strings<br/>
+                    <br/>
+                    GET '/word/<code>&lt;your_word&gt;</code>/antonyms' :<br/>
+                    Returns antonyms of the requested word.<br/>
+                    Output format : List of Strings<br/>
+                    <br/>
+                    GET '/word/<code>&lt;your_word&gt;</code>/synonyms' :<br/>
+                    Returns synonyms of the requested word.<br/>
+                    Output format : List of Strings<br/>
+                    <br/>
+                    GET '/word/<code>&lt;your_word&gt;</code>/examples' :<br/>
+                    Returns examples of the requested word.<br/>
+                    Output format : List of Strings<br/>
+                    <br/>
+                    GET '/word/<code>&lt;your_word&gt;</code>/allInfo' :<br/>
+                    Returns all the information of the requested word.<br/>
+                    Output format : Object containing information<br/>
+                    <br/>
+                    GET '/words' :<br/>
+                    Returns a random word with all its information.<br/>
+                    Output format : Object containing information <br/>
+                    <br/>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <h3>Using <a href="https://www.postman.com">postman</a> -</h3>
+                    Postman is a very good option for API testing.
+                    After installing Postman software, for a new query:-
+                    <ul>
+                        <li>Select Request method.</li>
+                        <li>Type url.</li>
+                        <li>In body, pass the values needed.</li>
+                    </ul>
+                    That's it.
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <h3><a href="https://github.com/Utkal97/Dictionary-CLI">Command Line Interface</a> -</h3>
+                    A CLI tool built using Nodejs with Commanderjs and Inquirerjs. <br/><br/>
+                    <h5>Installation -</h5>
+                    <ul>
+                        <li>Install Nodejs and npm</li>
+                        <li>Clone the directory</li>
+                        <li>In command prompt, go to the directory.</li>
+                        <li>Type `npm link`.</li>
+                    </ul>
+                    That's it. You have the commands working.
+                    If you have any problems, you can raise an issue <a href="https://github.com/Utkal97/Dictionary-CLI/issues">here.</a>
+                </div>
+            </div> 
+        </div>
+    </body>
+</html>
